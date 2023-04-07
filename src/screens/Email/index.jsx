@@ -1,7 +1,8 @@
 import { useContext, useState } from 'react';
-import { Button, View, TextInput, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Text, StyleSheet } from 'react-native';
 import { styles } from '../../styles/form';
 import { GlobalContext } from '../../../contexts/App';
+import Button from '../../components/Button';
 export default function Email({ navigation }) {
     const [email, setEmail] = useState();
     const [error, setError] = useState(null);
@@ -30,7 +31,7 @@ export default function Email({ navigation }) {
                 <TextInput style={styles.input} value={email} onChangeText={email => setEmail(email)} placeholder='exemplo@email.com' placeholderTextColor="#909090" />
                 {error && <Text style={styles.error}>{error}</Text>}
             </View>
-            <Button title='Cadastrar' onPress={handleValidate} />
+            <Button title='Cadastrar' handleFunction={handleValidate} />
         </View>
     )
 }

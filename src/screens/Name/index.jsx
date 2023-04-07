@@ -1,7 +1,8 @@
 import { useContext, useState } from 'react';
-import { Button, View, TextInput, Text } from 'react-native';
+import { TouchableOpacity, View, TextInput, Text } from 'react-native';
 import { styles } from '../../styles/form';
 import { GlobalContext } from '../../../contexts/App';
+import Button from '../../components/Button';
 
 export default function Name({ navigation }) {
     const [name, setName] = useState('');
@@ -10,12 +11,12 @@ export default function Name({ navigation }) {
     const { state, setState } = context;
     const handleValidate = () => {
         setError(null);
-        if(!name) {
+        if (!name) {
             setError('Nome é um campo obrigatório');
-        } else if(name.length < 3) {
+        } else if (name.length < 3) {
             setError('Necessário, pelo menos, 3 caracteres');
         } else {
-            setState({...state, name});
+            setState({ ...state, name });
             navigation.navigate('Cpf');
         }
     };
@@ -27,7 +28,10 @@ export default function Name({ navigation }) {
                 <TextInput style={styles.input} value={name} onChangeText={nameText => setName(nameText)} placeholder='Digite seu nome...' placeholderTextColor="#909090" />
                 {error && <Text style={styles.error}>{error}</Text>}
             </View>
-            <Button title='Continuar' onPress={handleValidate} />
+            <Button title={'Continuar'} handleFunction={handleValidate}/>
+            {/* <TouchableOpacity style={styles.button} onPress={handleValidate}>
+                <Text style={styles.buttonTitle}>Continuar</Text>
+            </TouchableOpacity> */}
         </View>
     )
 }

@@ -1,9 +1,10 @@
 import { useContext, useState } from 'react';
-import { Button, View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { styles } from '../../styles/form';
 import { cpfMask } from '../../common/mask';
 import { validationCPF } from '../../common/validationCpf';
 import { GlobalContext } from '../../../contexts/App';
+import Button from '../../components/Button';
 export default function Cpf({ navigation }) {
     const [cpf, setCpf] = useState('');
     const [error, setError] = useState(null);
@@ -16,7 +17,7 @@ export default function Cpf({ navigation }) {
         } else if (!validationCPF(cpf)) {
             setError('Digite um CPF válido');
         } else {
-            setState({...state, cpf});
+            setState({ ...state, cpf });
             navigation.navigate('Email');
         }
     };
@@ -28,7 +29,7 @@ export default function Cpf({ navigation }) {
                 <TextInput style={styles.input} keyboardType='numeric' value={cpf} onChangeText={e => setCpf(cpfMask(e))} placeholder='***.***.***-**' placeholderTextColor={'#909090'} />
                 {error && <Text style={styles.error}>{error}</Text>}
             </View>
-            <Button title='Continuar' onPress={handleValidation} />
+            <Button title='Continuar' handleFunction={handleValidation} />
         </View>
     )
 }
