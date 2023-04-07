@@ -16,4 +16,4 @@ Meu projeto em React Native CLI consiste em um aplicativo de teste de estágio c
 ## Como Rodar o Projeto
 
 Execute o comando `npx react-native start` e clique `a` para abrir o projeto em um disposivo Android (Físico ou Emulado).
-Obs.: Só testei o projeto no Android, pois não possui Mac!
+Obs.: Só testei o projeto no Android, pois não possuo Mac!
